@@ -1,27 +1,30 @@
 $(document).ready(function() {
-	var modal=document.getElementById('simpleModal');
-	var modalBtn=document.getElementById('modalBtn');
-	var closeBtn=document.getElementsByClassName('closeBtn')[0];
+	$('#sidebarCollapse').on('click', function () {
+		$('#sidebar').toggleClass('active');
+	});
+	// var modal=document.getElementById('simpleModal');
+	// var modalBtn=document.getElementById('modalBtn');
+	// var closeBtn=document.getElementsByClassName('closeBtn')[0];
 
 	var sbutton=document.getElementById('submitstudent');
 
-	modalBtn.addEventListener('click',openModal);
-	closeBtn.addEventListener('click',closeModal);
-	window.addEventListener('click',clickOutside);
+	// modalBtn.addEventListener('click',openModal);
+	// closeBtn.addEventListener('click',closeModal);
+	// window.addEventListener('click',clickOutside);
 	sbutton.addEventListener('click',registerSeller);
 
-	function openModal(){
-		modal.style.display='block';
-	}
-	function closeModal(){
-		modal.style.display='none';
-	}
-	function clickOutside(e){
-		if(e.target==modal){
-			modal.style.display='none';
-			document.getElementById("display").innerHTML="";
-		}
-	}
+	// function openModal(){
+	// 	modal.style.display='block';
+	// }
+	// function closeModal(){
+	// 	modal.style.display='none';
+	// }
+	// function clickOutside(e){
+	// 	if(e.target==modal){
+	// 		modal.style.display='none';
+	// 		document.getElementById("display").innerHTML="";
+	// 	}
+	// }
 
 	function registerSeller(){
 		var x = document.forms.namedItem("form1");
