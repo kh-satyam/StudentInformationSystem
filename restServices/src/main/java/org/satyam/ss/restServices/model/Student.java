@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Student {
 	private String Name;
 	private LocalDate DOB;
-	private String rollNumber;
+	private int rollNumber;
 	private double physicsMarks;
 	private double chemistryMarks;
 	private double mathematicsMarks;
@@ -33,13 +33,13 @@ public class Student {
 		this.grade = grade;
 	}
 
-	public Student(String Name, LocalDate DOB, String rollNumber) {
+	public Student(String Name, LocalDate DOB, int rollNumber) {
 		this.Name = Name;
 		this.DOB = DOB;
 		this.rollNumber = rollNumber;
 	}
 	
-	public Student(String Name, LocalDate DOB, String rollNumber, 
+	public Student(String Name, LocalDate DOB, int rollNumber, 
 			double physicsMarks, double chemistryMarks, double mathematicsMarks) {
 		this.Name = Name; this.DOB = DOB; this.rollNumber = rollNumber;
 		this.physicsMarks = physicsMarks; this.chemistryMarks = chemistryMarks;
@@ -92,7 +92,7 @@ public class Student {
 		return this.totalMarks;
 	}
 
-	public String getRollNumber() {
+	public int getRollNumber() {
 		return this.rollNumber;
 	}
 
@@ -108,7 +108,7 @@ public class Student {
 		return this.mathematicsMarks;
 	}
 
-	public void setRollNumber(String rollNumber) {
+	public void setRollNumber(int rollNumber) {
 		this.rollNumber = rollNumber;
 	}
 

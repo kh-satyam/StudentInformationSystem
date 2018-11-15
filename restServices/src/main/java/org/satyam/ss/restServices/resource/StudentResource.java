@@ -2,6 +2,7 @@ package org.satyam.ss.restServices.resource;
 
 import java.io.File;
 import java.io.InputStream;
+import java.time.LocalDate;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,7 +22,6 @@ import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.satyam.ss.restServices.Service.RestService;
 import org.satyam.ss.restServices.model.Student;
-import org.satyam.ss.restServices.model.simple;
 
 
 
@@ -37,26 +37,24 @@ public class StudentResource {
 		return 0;
 	}
 	@POST
-	@Path("addWithImage")
+	@Path("add")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public int uploadFileAndJSON(FormDataMultiPart form) { 
-		FormDataBodyPart filePart = form.getField("file");
-		InputStream is = filePart.getValueAs(InputStream.class);
-		ContentDisposition cdh =  filePart.getContentDisposition();
-		String fname=cdh.getFileName();
-		System.out.println(fname);
-		FormDataBodyPart jsonPart=form.getField("json");
-		jsonPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
-		Student obj=jsonPart.getValueAs(Student.class);
-		String path="C://Users/satyam/Desktop/"+obj.getRollNumber()+".png";
-		int res=service.addStudentWithImage(obj,is,path);
+		int res=0;
+		try {
+			FormDataBodyPart filePart = form.getField("file");
+			InputStream is = filePart.getValueAs(InputStream.class);
+			ContentDisposition cdh =  filePart.getContentDisposition();
+			String fname=cdh.getFileName();
+			System.out.println(fname);
+			FormDataBodyPart jsonPart=form.getField("json");
+			jsonPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
+			Student obj=jsonPart.getValueAs(Student.class);
+			String path="C://Users/satyam/Desktop/"+obj.getRollNumber()+".jpg";
+			res=service.addStudentWithImage(obj,is,path);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 	    return res;
-	}
-	@POST
-	@Path("add2")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public int check(simple obj) {
-		System.out.println(obj.abc);
-		return 0;
 	}
 }

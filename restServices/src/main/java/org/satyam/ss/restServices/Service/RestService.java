@@ -31,7 +31,7 @@ public class RestService {
 		try {
 			System.out.println("herer");
 			String name=obj.getName();
-			String rollno=obj.getRollNumber();
+			int rollno=obj.getRollNumber();
 			LocalDate dob=obj.getDOB();
 			Date date=new Date(dob.getYear(),dob.getMonthValue(),dob.getDayOfMonth());
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
@@ -41,10 +41,10 @@ public class RestService {
 			PreparedStatement stmt=connection.prepareStatement("insert into student values(?,?,?,?,?,?)");
 			stmt.setString(1, name);
 			stmt.setDate(2, sqlDate);
-			stmt.setString(3, rollno);
+			stmt.setInt(3, rollno);
 			stmt.setDouble(4, phy);
-			stmt.setDouble(4, chem);
-			stmt.setDouble(4, maths);
+			stmt.setDouble(5, chem);
+			stmt.setDouble(6, maths);
 			success=stmt.executeUpdate();
 			saveFile(is,location);
 		}catch(Exception e) {
