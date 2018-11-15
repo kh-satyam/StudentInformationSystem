@@ -40,7 +40,7 @@ $(document).ready(function() {
 		console.log(arr);
 		form.append("json",arr);
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "http://localhost:8080/student_api/webapi/Student/addWithImage");
+		xhr.open("POST", "http://localhost:8080/restServices/webapi/student/add");
 		//xhr.setRequestHeader("Content-Type", "multipart/form-data");
 		xhr.send(form);
 		xhr.onreadystatechange = function () {
