@@ -2,6 +2,9 @@
 FullStackWeb Project
 
 Database Table
+
+create database student;
+use student;
 CREATE TABLE `student` (
   `Name` varchar(100) NOT NULL,
   `DOB` date NOT NULL,
