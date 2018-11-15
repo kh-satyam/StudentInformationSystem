@@ -17,7 +17,7 @@ $(document).ready(function() {
 	    } 
 	    else 
 	    {
-	    	var jersey_url = "http://localhost:8080/student_api/webapi/Student/students/" + rollNumber;
+	    	var jersey_url = "http://localhost:8080/restServices/webapi/Student/students/" + rollNumber;
 		    $.ajax({
 		        url: jersey_url
 		    }).then(function(data) {
