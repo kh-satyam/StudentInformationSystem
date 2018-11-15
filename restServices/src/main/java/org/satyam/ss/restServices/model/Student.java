@@ -1,11 +1,14 @@
 package org.satyam.ss.restServices.model;
 
 import java.text.DecimalFormat;
+
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement
 public class Student {
 	private String Name;
 	private LocalDate DOB;
