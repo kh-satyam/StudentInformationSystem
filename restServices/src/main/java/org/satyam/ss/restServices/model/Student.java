@@ -136,7 +136,7 @@ public class Student {
 		this.updateMarks();
 	}
 	
-	private void updateMarks() {
+	public void updateMarks() {
 		this.totalMarks = this.getTotalMarks();
 		this.avgMarks = this.getAvgMarks();
 	}

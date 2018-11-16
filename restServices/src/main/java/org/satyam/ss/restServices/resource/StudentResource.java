@@ -2,7 +2,11 @@ package org.satyam.ss.restServices.resource;
 
 import java.io.File;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -31,10 +35,15 @@ import org.satyam.ss.restServices.model.Student;
 public class StudentResource {
 	private RestService service=new RestService();
 	@GET
-	@Path("add1")
-	public int addStudent() {
-		System.out.println("hello");
-		return 0;
+	@Path("get/{rollno}")
+	//@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Student getStudent(@PathParam("rollno") int roll) {
+		Student obj=service.getStudent(roll);
+		if(obj==null) {
+			return null;
+		}
+		return obj;
 	}
 	@POST
 	@Path("add")
@@ -56,5 +65,77 @@ public class StudentResource {
 			System.out.println(e);
 		}
 	    return res;
+	}
+	@GET
+	@Path("download/image/{rollno}")
+	@Produces({"image/png", "image/jpg", "image/gif"})
+	public Response downloadImageFile(@PathParam("rollno") String roll) {
+		String path="C://Users/satyam/Desktop/"+roll+".jpg";
+		File file = new File(path);
+		ResponseBuilder responseBuilder = Response.ok((Object) file);
+		roll=roll+".png";
+		responseBuilder.header("Content-Disposition",
+                "attachment; filename=roll");
+        return responseBuilder.build();
+	}
+	@PUT
+	@Path("update/{rollno}/{parameter}/{value}")
+	public int updateStudent(@PathParam("rollno") int roll,
+								@PathParam("parameter") String key,
+								@PathParam("value") String value){
+		int res=0;
+		//System.out.println(key);
+		if(key.compareTo("name")==0) {
+			res=service.updateName(roll, value);
+			//System.out.println(key);
+		}
+		if(key.compareTo("mathematicsMarks")==0) {
+			double marks=Double.valueOf(value);
+			res=service.updateMathematicsMarks(roll, marks);
+		}
+		if(key.compareTo("physicsMarks")==0) {
+			double marks=Double.valueOf(value);
+			res=service.updatePhysicsMarks(roll, marks);
+		}
+		if(key.compareTo("chemistryMarks")==0) {
+			double marks=Double.valueOf(value);
+			res=service.updateChemistryMarks(roll, marks);
+		}
+		if(key.compareTo("DOB")==0) {
+			try {
+				//Date date=new SimpleDateFormat("dd-mm-yyyy").parse(value);
+				java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+				res=service.updateDOB(roll,sqlDate);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}
+		return res;
+	}
+	@GET
+	@Path("getAll/{name}")
+	//@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Student> getStudent(@PathParam("name") String key) {
+		ArrayList<Student> res=new ArrayList<Student>();
+		if(key.compareTo("name")==0) {
+			res=service.getAllByName();
+		}
+		if(key.compareTo("totalMarks")==0) {
+			res=service.getAllByTotalMarks();
+		}
+		if(key.compareTo("grade")==0) {
+			res=service.getAllByGrade();
+		}
+		return res;
+	}
+	@GET
+	@Path("getAllRange/{from}/{to}/{key}")
+	//@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Student> getStudent(@PathParam("from") int from,@PathParam("to") int to,@PathParam("key") String key) {
+		ArrayList<Student> res=new ArrayList<Student>();
+		res=service.getAllByNameRange(from, to, key);
+		return res;
 	}
 }
