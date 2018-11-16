@@ -82,10 +82,11 @@ public class Student {
 	
 	public double getTotalMarks() {
 		this.totalMarks = this.physicsMarks + this.chemistryMarks + this.mathematicsMarks;
-		if (this.totalMarks > 90) this.setGrade('A');
-		else if (this.totalMarks <= 90 && this.totalMarks > 80)
+		double total = this.totalMarks/3;
+		if (total > 90) this.setGrade('A');
+		else if (total <=  90 && total > 80)
 			this.setGrade('B');
-		else if (this.totalMarks <= 80 && this.totalMarks > 70)
+		else if (total <= 80 && total > 70)
 			this.setGrade('C');
 		else 
 			this.setGrade('D');
@@ -115,7 +116,8 @@ public class Student {
 	public void setName(String name) {
 		this.Name = name;
 	}
-
+	
+	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	public void setDOB(LocalDate dOB) {
 		this.DOB = dOB;
 		this.age = this.getAge();
@@ -143,7 +145,7 @@ public class Student {
 
 	public String toString() {
 		return "Name: " + this.Name + ", Roll Number: " + this.rollNumber 
-				+ "DOB: " + this.DOB + ", Age: " + this.getAge()
+				+ ", DOB: " + this.DOB + ", Age: " + this.getAge()
 				+ ", Marks: " + this.physicsMarks + "(Phy.), " 
 				+ this.chemistryMarks + "(Chem.), " + this.mathematicsMarks 
 				+ "(Maths)." + " Total: " + this.totalMarks 

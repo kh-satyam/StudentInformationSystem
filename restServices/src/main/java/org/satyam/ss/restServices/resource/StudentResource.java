@@ -67,7 +67,7 @@ public class StudentResource {
 	@Path("download/image/{rollno}")
 	@Produces({"image/png", "image/jpg", "image/gif"})
 	public Response downloadImageFile(@PathParam("rollno") String roll) {
-		String path="C://Users/satyam/Desktop/"+roll+".jpg";
+		String path="C://images/"+roll+".jpg";
 		File file = new File(path);
 		ResponseBuilder responseBuilder = Response.ok((Object) file);
 		roll=roll+".png";

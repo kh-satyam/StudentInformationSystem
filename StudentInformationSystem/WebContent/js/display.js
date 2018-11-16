@@ -10,14 +10,16 @@ $(document).ready(function() {
 	$('#submit').click(function()
 	{
 		hide_tw();
-		rollNumber = document.getElementById("rollNumber").value;
-	    if (rollNumber == "") 
+		var inputRollNumber = $("#inputRollNumber").val();
+	    if (inputRollNumber == "") 
 	    {
 	        alert("Please enter roll number.");
-	    } 
+	    } else if ( isNaN(inputRollNumber) || inputRollNumber < 0) {
+	    	alert("Please roll number as a number greater than 0.")
+	    }
 	    else 
 	    {
-	    	var jersey_url = "http://localhost:8080/restServices/webapi/student/get/" + rollNumber;
+	    	var jersey_url = "http://localhost:8080/restServices/webapi/student/get/" + inputRollNumber;
 		    $.ajax({
 		        url: jersey_url
 		    }).then(function(data) {
@@ -25,7 +27,11 @@ $(document).ready(function() {
 			    	console.log(data);
 			    	$('#Name').empty().append(data.name);
 			       	$('#rollNumber').empty().append(data.rollNumber);
-			       	$('#DOB').empty().append(data.DOB);
+	                var date = data.DOB;
+			       	var year = date.substr(0,4);
+	                var month = date.substr(5,2);
+	                var day = date.substr(8,2)
+			       	$('#DOB').empty().append(day + "/" + month + "/" + year);
 			       	$('#age').empty().append(data.age);
 			       	$('#chemistryMarks').empty().append(data.chemistryMarks);
 			       	$('#mathematicsMarks').empty().append(data.mathematicsMarks);

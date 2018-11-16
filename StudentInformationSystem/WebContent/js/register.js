@@ -40,7 +40,7 @@ $(document).ready(function() {
 			if(x.elements[i].name!="file"){
 				if ( x.elements[i].name == "rollNumber" ) {
 					var rollNumber = parseInt(x.elements[i].value);
-					if ( isNaN(rollNumber) || rollNumber < 0) {alert("Please roll number as a number greater than 0.")}
+					if ( isNaN(rollNumber) || rollNumber < 1) {alert("Please roll number as a number greater than 0.")}
 				}
 				if ( x.elements[i].name == "physicsMarks" || x.elements[i].name == "chemistryMarks" 
 				|| x.elements[i].name == "mathematicsMarks"  ) {
