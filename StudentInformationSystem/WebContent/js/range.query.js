@@ -47,7 +47,6 @@ $(document).ready(function() {
 	    				populate += (openingDiv + 2 + opdiv2 + "<img src=\"" + imgUrl + "\" style=\"width:50px;height:50px;\">" + closingDiv);
 	    				populate += (closingDiv);
 		    		};
-		    		console.log(populate);
 		    		$("#displayBody").html(populate);
 		    		if( !($( '#displayHeader' ).is(":visible")) ) $('#displayHeader').show();
 		    	} else {

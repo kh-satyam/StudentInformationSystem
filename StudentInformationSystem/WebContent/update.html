@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> Student Portal</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="css/update.css">
+        <!-- Font Awesome CSS -->
+        <!-- <link rel="stylesheet" href="css/all.css"> -->
+
+        <!-- Font Awesome JS -->
+        <!-- <script defer src="js/solid.js"></script> -->
+        <!-- <script defer src="js/fontawesome.js"></script> -->
+
+        <!-- jQuery -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <!-- Popper.JS -->
+        <!-- <script src="js/popper.min.js"></script> -->
+        <!-- Bootstrap JS -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/update.js"></script>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
 
 </head>
 <body>
@@ -45,10 +71,6 @@
             </li>
 
             <li>
-                <a href="sort.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Sort </a>
-            </li>
-            
-            <li>
                 <a href="range-query.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query </a>
             </li>
         </ul>
@@ -68,20 +90,28 @@
     <h2>Update student Record</h2>
     <br>
      <form id="f3" class="form-group" name="form3">
-         <input type="text" autocomplete="off" placeholder="Enter Roll Number" class="form-control" name="rollno" required>
+         <input type="text" autocomplete="off" placeholder="Enter Roll Number" class="form-control" name="rollNumber" required>
+         <p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
          <br>
-         <select name="parameter" class="form-control" >
-              <option value="Name">Name</option>
+         <select id="toggle" name="parameter" class="form-control" >
+              <option value="name">Name</option>
               <option value="physicsMarks">Physics Marks</option>
               <option value="chemistryMarks">Chemistry Marks</option>
               <option value="mathematicsMarks">Mathematics Marks</option>
+              <option value="DOB">Date of Birth</option>
          </select>
          <br><br>
-         <label for="new_record"> New Value </label>
-         <input type="text" autocomplete="off" placeholder="Enter your value here" class="form-control" name="new_record" required>
+         <label for="value"> Enter New Value </label>
+         <input type="text" id="t1" autocomplete="off" placeholder="Enter new value." class="form-control" name="value1" required>
+         <p class='msg text-danger' id="physicsMarks-msg">Enter valid physics marks.[0-100]</p>
+         <p class='msg text-danger' id="chemistryMarks-msg">Enter valid chemistry marks.[0-100]</p>
+         <p class='msg text-danger' id="mathematicsMarks-msg">Enter valid mathematics marks.[0-100]</p>
+         <input type="date" class="form-control"	 placeholder="YYYY-MM-DD" id="t2" placeholder="record" name="value2" required>
+         <p class='msg text-danger' id="dob-msg">You must be more than 3 year old.</p>
+         <p class='msg text-danger' id="dob-old-msg">This can't be true.</p>
          <br>
          <br>
-         <button class="btn btn-basic" id="updateStudent">Update Details</button>
+         <button type="button" class="btn btn-basic" id="updateStudent">Update Details</button>
      </form>
     </div>
 >>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git

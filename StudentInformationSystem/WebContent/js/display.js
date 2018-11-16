@@ -3,19 +3,22 @@ function hide_tw() {
 		$('#invalid').hide();
 	if($( '#information' ).is(":visible"))
 		$('#information').hide();
+	$('.msg').hide();
 }
 
 $(document).ready(function() {
 	hide_tw();
+	$('.msg').hide();
 	$('#submit').click(function()
 	{
 		hide_tw();
+		$('.msg').hide();
 		var inputRollNumber = $("#inputRollNumber").val();
 	    if (inputRollNumber == "") 
 	    {
-	        alert("Please enter roll number.");
-	    } else if ( isNaN(inputRollNumber) || inputRollNumber < 0) {
-	    	alert("Please roll number as a number greater than 0.")
+	    	$("#rollNumber-msg").show("slow"); return;
+	    } else if ( isNaN(inputRollNumber) || inputRollNumber < 1) {
+			$("#rollNumber-msg").show("slow"); return;
 	    }
 	    else 
 	    {
