@@ -158,13 +158,13 @@ public class RestService {
 		}
 		return success;
 	}
-	public int updateDOB(int roll,Date date) {
+	public int updateDOB(int roll,LocalDate date) {
 		int success=0;
 		try {
 			//java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 			String sql = "update student set DOB=? where rollnumber=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setDate(1,date);
+			stmt.setDate(1,Date.valueOf(date));
 			stmt.setInt(2, roll);
 			success=stmt.executeUpdate();
 		    System.out.println(success);

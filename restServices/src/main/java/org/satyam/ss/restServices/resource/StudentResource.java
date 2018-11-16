@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -100,8 +101,10 @@ public class StudentResource {
 		if(key.compareTo("DOB")==0) {
 			try {
 				//Date date=new SimpleDateFormat("dd-mm-yyyy").parse(value);
-				java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-				res=service.updateDOB(roll,sqlDate);
+				//java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+				//DateTimeFormatter formatter = DateTimeFormatter.ofPattern();
+				LocalDate localDate = LocalDate.parse(value);
+				res=service.updateDOB(roll,localDate);
 			}catch(Exception e) {
 				System.out.println(e);
 			}
