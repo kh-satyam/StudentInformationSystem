@@ -50,9 +50,8 @@
             <li>
                 <a href="display.html">   <span class="tab"> <i class="fas fa-eye"></i> </span> Display  </a>
             </li>
-
             <li>
-                <a href="dis	playRange.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Sort </a>
+                <a href="range-query.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query </a>
             </li>
         </ul>
     </nav>
@@ -79,51 +78,29 @@
               <div class="modal-body">
                <div class="formcontainer">
                 <form id="f1" enctype="multipart/form-data" class="form-group" name="form1" action="" method="post">
-<<<<<<< HEAD
-                    <label for="sid"> Full Name </label>
-=======
                     <label for="Name"> Full Name </label>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <input type="text" autocomplete="off" placeholder="Enter Student Name" class="form-control" name="Name" required>
                     <br>
-<<<<<<< HEAD
-                    <label for="name"> Roll Number </label>
-                    <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollnumber" required>
-=======
                     <label for="rollNumber"> Roll Number </label>
                     <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollNumber" required>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
+                    <p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
                     <br>
-<<<<<<< HEAD
-                    <label for="rollno"> Date of Birth </label>
-=======
                     <label for="DOB"> Date of Birth </label>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <input type="date" autocomplete="off" placeholder="Date of Birth" class="form-control" name="DOB" required>
+                    <p class='msg text-danger' id="dob-msg">You must be more than 3 year old.</p>
+                    <p class='msg text-danger' id="dob-old-msg">This can't be true.</p>        
                     <br>
-<<<<<<< HEAD
-                    <label for="phy"> Physics Marks </label>
-                    <input type="text" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
-=======
                     <label for="physicsMarks"> Physics Marks </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
+                    <p class='msg text-danger' id="physicsMarks-msg">Enter valid physics marks.[0-100]</p>
                     <br>
-<<<<<<< HEAD
-                    <label for="chem"> Chemistry Marks </label>
-                    <input type="text" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
-=======
                     <label for="chemistryMarks"> Chemistry Marks </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
+                    <p class='msg text-danger' id="chemistryMarks-msg">Enter valid chemistry marks.[0-100]</p>
                     <br>
-<<<<<<< HEAD
-                    <label for="maths"> Mathematics </label>
-                    <input type="text" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
-=======
-                    <label for="mathematicsMarks"> Mathematics </label>
+					<label for="mathematicsMarks"> Mathematics </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
+                    <p class='msg text-danger' id="mathematicsMarks-msg">Enter valid mathematics marks.[0-100]</p>
                     
                 </form>
                 <form id="f2" enctype="multipart/form-data" class="form-group" name="form2" method="POST">
@@ -133,7 +110,7 @@
 
             </div>
 				<p class='msg text-success' id="success-msg">Successful.</p>
-				<p class='msg text-warning' id="eexist-msg">Entry already exist.</p>
+				<p class='msg text-warning' id="eexist-msg">Entry with this roll number already exist.</p>
 				<p class='msg text-danger' id="error-msg">Server side error occurred.</p>
               </div>
               <div class="modal-footer">
