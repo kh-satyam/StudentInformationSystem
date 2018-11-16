@@ -14,13 +14,17 @@ import java.util.Date;
 
 import org.satyam.ss.restServices.model.Student;
 
+import javafx.scene.chart.PieChart.Data;
+
 public class RestService {
 	private Connection connection;
 	public RestService(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/studentproject?autoReconnect=true&useSSL=false","root","root");
+			connection=DriverManager.getConnection(
+					DatabaseConfiguration.dataBaseUrl,
+					DatabaseConfiguration.userName,
+					DatabaseConfiguration.password);
 		}catch(Exception e) {
 			System.out.println("Error occurred");
 			System.out.println(e);
