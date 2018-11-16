@@ -73,6 +73,7 @@
     <br>
      <form id="f3" class="form-group" name="form3">
          <input type="text" autocomplete="off" placeholder="Enter Roll Number" class="form-control" name="rollNumber" required>
+         <p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
          <br>
          <select id="toggle" name="parameter" class="form-control" >
               <option value="name">Name</option>
@@ -84,7 +85,12 @@
          <br><br>
          <label for="value"> Enter New Value </label>
          <input type="text" id="t1" autocomplete="off" placeholder="Enter new value." class="form-control" name="value1" required>
+         <p class='msg text-danger' id="physicsMarks-msg">Enter valid physics marks.[0-100]</p>
+         <p class='msg text-danger' id="chemistryMarks-msg">Enter valid chemistry marks.[0-100]</p>
+         <p class='msg text-danger' id="mathematicsMarks-msg">Enter valid mathematics marks.[0-100]</p>
          <input type="date" class="form-control"	 placeholder="YYYY-MM-DD" id="t2" placeholder="record" name="value2" required>
+         <p class='msg text-danger' id="dob-msg">You must be more than 3 year old.</p>
+         <p class='msg text-danger' id="dob-old-msg">This can't be true.</p>
          <br>
          <br>
          <button type="button" class="btn btn-basic" id="updateStudent">Update Details</button>
