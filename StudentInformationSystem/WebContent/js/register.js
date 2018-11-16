@@ -31,23 +31,39 @@ $(document).ready(function() {
 		$('.msg').hide();
 		var x = document.forms.namedItem("form1");
 		var y = document.forms.namedItem("form2");
-		console.log(y);
 		var i;
 		var arr = {};
 		var arr1={}
 		var form = new FormData(y);
 		for(i=0;i<x.length;i++){
 			if(x.elements[i].name!="file"){
+				// from validation
+				// validating roll number
 				if ( x.elements[i].name == "rollNumber" ) {
 					var rollNumber = parseInt(x.elements[i].value);
-					if ( isNaN(rollNumber) || rollNumber < 1) {alert("Please roll number as a number greater than 0.")}
+					if ( isNaN(rollNumber) || rollNumber < 1) {$("#rollNumber-msg").show("slow"); return;}
 				}
-				if ( x.elements[i].name == "physicsMarks" || x.elements[i].name == "chemistryMarks" 
+				
+				// validating dob
+				else if ( x.elements[i].name == "DOB" ) { 
+					var entDOB = new Date(x.elements[i].value);
+					var yage = new Date("2015-01-01");
+					var old = new Date("1890-01-01");
+					if ( entDOB > yage ) {
+						$("#dob-msg").show("slow"); 
+						return;
+					} else if ( entDOB < old ) {
+						$("#dob-old-msg").show("slow");
+						return;
+					}
+				}
+				
+				// validating marks 
+				else if ( x.elements[i].name == "physicsMarks" || x.elements[i].name == "chemistryMarks" 
 				|| x.elements[i].name == "mathematicsMarks"  ) {
 					var marks = parseInt(x.elements[i].value);
 					var field = x.elements[i].name;
-					if ( isNaN(marks) ) {alert("Marks must be a number from 0 to 100. Check " + field); return;}
-					if (marks < 0 || marks > 100) { alert("Enter valid marks of " + field + " from 0 to 100."); return;}
+					if ( isNaN(marks) || (marks < 0 || marks > 100)) {$("#" + field + "-msg").show("slow"); return;}
 				}
 				arr[x.elements[i].name]=x.elements[i].value;
 			}
@@ -65,12 +81,12 @@ $(document).ready(function() {
 //		        var dis=document.getElementById("display");
 		        // document.getElementById("f1").reset();
 		        // document.getElementById("f2").reset();
-		        if(json_data == 1) $('#success-msg').show("slow");
-				else if(json_data == 2) $('#eexist-msg').show("slow");
+		        if(json_data == 0) $('#eexist-msg').show("slow");
+		        else if(json_data == 1) $('#success-msg').show("slow");
 				else $('#error-msg').show("slow");
 //		        if(json_data==1){
 //		        	$.
-////		        	dis.innerHTML="Student Registration Successfull";
+////		        	dis.innerHTML="Student Registration Successful";
 //		        }else{
 //		        	dis.innerHTML="There is an Error while registering";
 //		        }

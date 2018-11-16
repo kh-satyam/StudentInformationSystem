@@ -84,18 +84,24 @@
                     <br>
                     <label for="rollNumber"> Roll Number </label>
                     <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollNumber" required>
+                    <p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
                     <br>
                     <label for="DOB"> Date of Birth </label>
                     <input type="date" autocomplete="off" placeholder="Date of Birth" class="form-control" name="DOB" required>
+                    <p class='msg text-danger' id="dob-msg">You must be more than 3 year old.</p>
+                    <p class='msg text-danger' id="dob-old-msg">This can't be true.</p>        
                     <br>
                     <label for="physicsMarks"> Physics Marks </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
+                    <p class='msg text-danger' id="physicsMarks-msg">Enter valid physics marks.[0-100]</p>
                     <br>
                     <label for="chemistryMarks"> Chemistry Marks </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
+                    <p class='msg text-danger' id="chemistryMarks-msg">Enter valid chemistry marks.[0-100]</p>
                     <br>
                     <label for="mathematicsMarks"> Mathematics </label>
                     <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
+                    <p class='msg text-danger' id="mathematicsMarks-msg">Enter valid mathematics marks.[0-100]</p>
                     
                 </form>
                 <form id="f2" enctype="multipart/form-data" class="form-group" name="form2" method="POST">
@@ -105,7 +111,7 @@
 
             </div>
 				<p class='msg text-success' id="success-msg">Successful.</p>
-				<p class='msg text-warning' id="eexist-msg">Entry already exist.</p>
+				<p class='msg text-warning' id="eexist-msg">Entry with this roll number already exist.</p>
 				<p class='msg text-danger' id="error-msg">Server side error occurred.</p>
               </div>
               <div class="modal-footer">
