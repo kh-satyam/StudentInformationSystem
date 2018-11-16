@@ -79,31 +79,34 @@
               <div class="modal-body">
                <div class="formcontainer">
                 <form id="f1" enctype="multipart/form-data" class="form-group" name="form1" action="" method="post">
-                    <label for="sid"> Full Name </label>
-                    <input type="text" autocomplete="off" placeholder="Enter Student Name" class="form-control" name="name" required>
+                    <label for="Name"> Full Name </label>
+                    <input type="text" autocomplete="off" placeholder="Enter Student Name" class="form-control" name="Name" required>
                     <br>
-                    <label for="name"> Roll Number </label>
-                    <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollno" required>
+                    <label for="rollNumber"> Roll Number </label>
+                    <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollNumber" required>
                     <br>
-                    <label for="rollno"> Date of Birth </label>
-                    <input type="date" autocomplete="off" placeholder="Date of Birth" class="form-control" name="dob" required>
+                    <label for="DOB"> Date of Birth </label>
+                    <input type="date" autocomplete="off" placeholder="Date of Birth" class="form-control" name="DOB" required>
                     <br>
-                    <label for="phy"> Physics Marks </label>
-                    <input type="text" autocomplete="off" placeholder="Physics" class="form-control" name="phy" required>
+                    <label for="physicsMarks"> Physics Marks </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
                     <br>
-                    <label for="chem"> Chemistry Marks </label>
-                    <input type="text" autocomplete="off" placeholder="Chemistry" class="form-control" name="chem" required>
+                    <label for="chemistryMarks"> Chemistry Marks </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
                     <br>
-                    <label for="maths"> Mathematics </label>
-                    <input type="text" autocomplete="off" placeholder="Maths" class="form-control" name="maths" required>
+                    <label for="mathematicsMarks"> Mathematics </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
                     
                 </form>
                 <form id="f2" enctype="multipart/form-data" class="form-group" name="form2" method="POST">
                     <label for="file"> Upload Image </label>
                     <input type="file" placeholder="image" class="form-control" name="file" required>
                 </form>
-            </div>
 
+            </div>
+				<p class='msg text-success' id="success-msg">Successful.</p>
+				<p class='msg text-warning' id="eexist-msg">Entry already exist.</p>
+				<p class='msg text-danger' id="error-msg">Server side error occurred.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

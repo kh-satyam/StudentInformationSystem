@@ -17,21 +17,24 @@ $(document).ready(function() {
 	    } 
 	    else 
 	    {
-	    	var jersey_url = "http://localhost:8080/student_api/webapi/Student/students/" + rollNumber;
+	    	var jersey_url = "http://localhost:8080/restServices/webapi/student/get/" + rollNumber;
 		    $.ajax({
 		        url: jersey_url
 		    }).then(function(data) {
 		    	if(data != undefined) {
 			    	console.log(data);
-			    	$('#name').empty().append(data.Name);
-			       	$('#rollNumber').empty().append(data.rollNo);
+			    	$('#Name').empty().append(data.Name);
+			       	$('#rollNumber').empty().append(data.rollNumber);
 			       	$('#DOB').empty().append(data.DOB);
 			       	$('#age').empty().append(data.age);
 			       	$('#chemistryMarks').empty().append(data.chemistryMarks);
 			       	$('#mathematicsMarks').empty().append(data.mathematicsMarks);
+			       	$('#totalMarks').empty().append(data.totalMarks);
 			       	$('#physicsMarks').empty().append(data.physicsMarks);
+			       	$('#avgMarks').empty().append(data.avgMarks);
+			       	$('#grade').empty().append(data.grade);
 			       	$('#information').show("slow");
-			       	var imgUrl = "http://localhost:8080/student_api/webapi/Student/"+"download/image/"+data.rollno;
+			       	var imgUrl = "http://localhost:8080/restServices/webapi/student/download/image/"+data.rollNumber;
 			       	$("#imageUrl").attr("src", imgUrl);
 			       	$("#imageUrl").show();
 		    	} else {
