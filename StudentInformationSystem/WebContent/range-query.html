@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,7 @@
                 });
             });
         </script>
-        <script src="js/displayRange.js"></script>
+        <script src="js/range.query.js"></script>
 
 </head>
 
@@ -61,11 +60,11 @@
             </li>
 
             <li>
-                <a href="displayRange.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Sort </a>
+                <a href="range-query.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query </a>
             </li>
         </ul>
     </nav>
-
+    
     <div id="content">
                 <div class="container-fluid">
 
@@ -75,27 +74,55 @@
                     </button>
                    
                 </div>
+  
     <div class="myUpdateForm">
-    
-    <h2>Display Records</h2>
     <br>
-     <form id="f3" class="form-group" name="rangeForm">
-     <p>Enter Range of roll numbers to Query</p>
-         <input type="text" autocomplete="off" placeholder="From" class="form-control" name="from" required>
-         <input type="text" autocomplete="off" placeholder="To" class="form-control" name="to" required>
+     <form id="f3" class="form-group" action="" name="rangeForm">
+     <h4>Enter Range of roll numbers to Display list of students.</h4>
+         <input type="text" autocomplete="off" placeholder="Enter Starting Roll number" class="form-control" name="startingRollNumber" id="startingRollNumber"  required>           
+         <br>
+         <input type="text" autocomplete="off" placeholder="Enter Ending Roll number" class="form-control" name="endingRollNumber" id="endingRollNumber" required>  
          <p>Sort By</p>
-         <select name="parameter" class="form-control" >
+         <select id="select_option" name="parameter" class="form-control" >
+              <option value="rollNumber">Roll Number</option>
               <option value="name">Name</option>
               <option value="grade">Grade</option>
               <option value="totalMarks">TotalMarks</option>
          </select>
-         <button class="btn btn-basic" id="getResults">View Records</button>
+         <button type="button" class="btn btn-basic" id="submit">View Records</button>
      </form>
     </div>
-<p id="display"></p>
-
+    
+	 <div class="container">
+	 <div id="displayHeader" class="container">
+	  <div	 class="row">
+	    <div class="col-sm-2" style="background-color:#bbb;">
+	      Roll No.
+	    </div>
+	    <div class="col-sm-3" style="background-color:#bbb;">
+	      Name
+	    </div>
+<!-- 	    <div class="col-sm-1" style="background-color:#bbb;">
+	      DOB
+	    </div> -->
+	    <div class="col-sm-3" style="background-color:#bbb;">
+	      Total Marks
+	    </div>
+	    <div class="col-sm-2" style="background-color:#bbb;">
+	      Grade
+	    </div>
+	    <div class="col-sm-2" style="background-color:#bbb;">
+	      Image
+	    </div>
+	  </div>
+	 </div>
+	  
+      <div id="displayBody" class="container">
+	   </div>
+    
     </div>
-    </div>
+   </div>
+   </div>
 </body>
 
 </html>
