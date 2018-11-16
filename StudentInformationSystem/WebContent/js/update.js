@@ -1,6 +1,33 @@
 $(document).ready(function() {
+	
+	$('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+	
 	var sbutton=document.getElementById('updateStudent');
+	var toggler=document.getElementById('toggle');
+	var z = document.getElementById("t2");
+	z.style.visibility='hidden';
 	sbutton.addEventListener('click',updateRecord);
+	toggler.addEventListener('click',checkDateOrNot);
+	
+	function checkDateOrNot(){
+		console.log(toggler.value);
+		var x = document.getElementById("t1");
+		var y = document.getElementById("t2");
+		if(toggler.value=="DOB"){
+			x.style.visibility='hidden';
+			if(y.style.visibility==='hidden'){
+				console.log(":hidden");
+				y.style.visibility='visible';
+			}
+		}
+		else{
+			x.style.visibility='visible';
+			y.style.visibility='hidden';
+		}
+	}
+
 	function updateRecord(){
 		var x = document.forms.namedItem("form3");
 		var i;
@@ -11,13 +38,16 @@ $(document).ready(function() {
 		}
 		console.log(arr);
 		form.append("json",arr);
-		var val1=arr["rollno"];
+		var val1=arr["rollNumber"];
 		var val2=arr["parameter"];
-		var val3=arr["new_record"];
+		var val3=arr["value1"];
+		if(toggler.value=="DOB"){
+			val3=arr["value2"]
+		}
 		var val1=val1+"/"+val2+"/"+val3;
 		console.log(val1);
 		var xhr = new XMLHttpRequest();
-		xhr.open('PUT', 'http://localhost:8080/student_api/webapi/Student/update/'+val1, true);
+		xhr.open('PUT', 'http://localhost:8080/restServices/webapi/student/update/'+val1, true);
 		xhr.setRequestHeader("Content-Type", "application/json");
 		data=JSON.stringify(arr);
 		console.log(data);

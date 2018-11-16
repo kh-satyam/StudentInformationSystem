@@ -24,14 +24,6 @@
         <!-- <script src="js/popper.min.js"></script> -->
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-        </script>
         <script src="js/update.js"></script>
 
 </head>
@@ -61,10 +53,6 @@
             </li>
 
             <li>
-                <a href="sort.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Sort </a>
-            </li>
-            
-            <li>
                 <a href="range-query.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query </a>
             </li>
         </ul>
@@ -84,20 +72,22 @@
     <h2>Update student Record</h2>
     <br>
      <form id="f3" class="form-group" name="form3">
-         <input type="text" autocomplete="off" placeholder="Enter Roll Number" class="form-control" name="rollno" required>
+         <input type="text" autocomplete="off" placeholder="Enter Roll Number" class="form-control" name="rollNumber" required>
          <br>
-         <select name="parameter" class="form-control" >
-              <option value="Name">Name</option>
+         <select id="toggle" name="parameter" class="form-control" >
+              <option value="name">Name</option>
               <option value="physicsMarks">Physics Marks</option>
               <option value="chemistryMarks">Chemistry Marks</option>
               <option value="mathematicsMarks">Mathematics Marks</option>
+              <option value="DOB">Date of Birth</option>
          </select>
          <br><br>
-         <label for="new_record"> New Value </label>
-         <input type="text" autocomplete="off" placeholder="Enter your value here" class="form-control" name="new_record" required>
+         <label for="value"> Enter New Value </label>
+         <input type="text" id="t1" autocomplete="off" placeholder="Enter new value." class="form-control" name="value1" required>
+         <input type="date" class="form-control"	 placeholder="YYYY-MM-DD" id="t2" placeholder="record" name="value2" required>
          <br>
          <br>
-         <button class="btn btn-basic" id="updateStudent">Update Details</button>
+         <button type="button" class="btn btn-basic" id="updateStudent">Update Details</button>
      </form>
     </div>
 <p id="display"></p>
