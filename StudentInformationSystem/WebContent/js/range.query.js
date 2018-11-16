@@ -3,9 +3,13 @@ $(document).ready(function() {
 		$('#sidebar').toggleClass('active');
 	});
 	$('.msg').hide();
+	if($( '#displayHeader' ).is(":visible"))
+		$('#displayHeader').hide();
 
 	$('#submit').click(function()
 	{
+		if($( '#displayHeader' ).is(":visible"))
+			$('#displayHeader').hide();
 		$("#diplayBody").empty();
 		console.log($("#displayBody div").val());
 		var startingRollNumber = $("#startingRollNumber").val();
@@ -45,6 +49,7 @@ $(document).ready(function() {
 		    		};
 		    		console.log(populate);
 		    		$("#displayBody").html(populate);
+		    		if( !($( '#displayHeader' ).is(":visible")) ) $('#displayHeader').show();
 		    	} else {
 		    		// $('#invalid').show("slow");
 		    		alert("error occured");
