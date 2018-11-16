@@ -79,31 +79,62 @@
               <div class="modal-body">
                <div class="formcontainer">
                 <form id="f1" enctype="multipart/form-data" class="form-group" name="form1" action="" method="post">
+<<<<<<< HEAD
                     <label for="sid"> Full Name </label>
+=======
+                    <label for="Name"> Full Name </label>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <input type="text" autocomplete="off" placeholder="Enter Student Name" class="form-control" name="Name" required>
                     <br>
+<<<<<<< HEAD
                     <label for="name"> Roll Number </label>
                     <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollnumber" required>
+=======
+                    <label for="rollNumber"> Roll Number </label>
+                    <input type="text" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="rollNumber" required>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <br>
+<<<<<<< HEAD
                     <label for="rollno"> Date of Birth </label>
+=======
+                    <label for="DOB"> Date of Birth </label>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <input type="date" autocomplete="off" placeholder="Date of Birth" class="form-control" name="DOB" required>
                     <br>
+<<<<<<< HEAD
                     <label for="phy"> Physics Marks </label>
                     <input type="text" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
+=======
+                    <label for="physicsMarks"> Physics Marks </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Physics" class="form-control" name="physicsMarks" required>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <br>
+<<<<<<< HEAD
                     <label for="chem"> Chemistry Marks </label>
                     <input type="text" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
+=======
+                    <label for="chemistryMarks"> Chemistry Marks </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Chemistry" class="form-control" name="chemistryMarks" required>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     <br>
+<<<<<<< HEAD
                     <label for="maths"> Mathematics </label>
                     <input type="text" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
+=======
+                    <label for="mathematicsMarks"> Mathematics </label>
+                    <input type="text" data-validation="number" data-validation-allowing="range[0;100]" autocomplete="off" placeholder="Maths" class="form-control" name="mathematicsMarks" required>
+>>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
                     
                 </form>
                 <form id="f2" enctype="multipart/form-data" class="form-group" name="form2" method="POST">
                     <label for="file"> Upload Image </label>
                     <input type="file" placeholder="image" class="form-control" name="file" required>
                 </form>
-            </div>
 
+            </div>
+				<p class='msg text-success' id="success-msg">Successful.</p>
+				<p class='msg text-warning' id="eexist-msg">Entry already exist.</p>
+				<p class='msg text-danger' id="error-msg">Server side error occurred.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

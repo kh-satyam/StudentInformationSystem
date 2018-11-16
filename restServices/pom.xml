@@ -18,8 +18,8 @@
                 <version>2.5.1</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -34,9 +34,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+			
+            
         </dependencies>
     </dependencyManagement>
-
+		
     <dependencies>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
@@ -48,13 +50,27 @@
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
         </dependency>
-        <!-- uncomment this to get JSON support
+       
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
         </dependency>
-        -->
+       <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+    		<version>8.0.12</version>
+		</dependency>
+       <dependency>
+    		<groupId>org.glassfish.jersey.media</groupId>
+    		<artifactId>jersey-media-multipart</artifactId>
+    		<version>2.27</version> <!-- Make sure the Jersey version matches
+                                 the one you are currently using -->
+		</dependency>
+		
+       
     </dependencies>
+    
     <properties>
         <jersey.version>2.27</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

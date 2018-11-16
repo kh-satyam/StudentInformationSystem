@@ -15,6 +15,8 @@ public class LocalDateAdapter extends XmlAdapter<String, LocalDate> {
 
     @Override
     public String marshal(LocalDate localDate) throws Exception {
+//        return DateTimeFormatter.ofPattern("dd-MM-yyyy").format(localDate);
+
         return DateTimeFormatter.ISO_DATE.format(localDate);
     }
 }

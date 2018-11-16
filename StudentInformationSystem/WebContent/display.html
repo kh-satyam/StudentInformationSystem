@@ -81,7 +81,7 @@
             <form>
             <div class="form-group">
                 <h3>Enter Roll Number </h3>
-                <input type="text" autocomplete="off" class="form-control" id="rollNumber">
+                <input type="number" id="inputRollNumber" autocomplete="off" placeholder="Enter Roll number" class="form-control" name="inputRollNumber" required>
                 <br>
                 <button id="submit" type="button" class="btn btn-basic">Submit</button>
             </div>
@@ -100,7 +100,7 @@
                 <tbody>
                 <tr>
                     <th>Name</th>
-                    <td id="name"></td>
+                    <td id="Name"></td>
                 </tr>
                 <tr>
                     <th>Roll Number</th>
@@ -125,6 +125,10 @@
                 <tr>
                     <th>Physics</th>
                     <td id="physicsMarks"></td>
+                </tr>
+                <tr>
+                    <th>Grade</th>
+                    <td id="grade"></td>
                 </tr>
                 <tr>
                     <th>Total Marks</th>

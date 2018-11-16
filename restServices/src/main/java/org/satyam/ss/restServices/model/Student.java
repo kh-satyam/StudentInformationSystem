@@ -1,15 +1,18 @@
 package org.satyam.ss.restServices.model;
 
 import java.text.DecimalFormat;
+
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement
 public class Student {
 	private String Name;
 	private LocalDate DOB;
-	private String rollNumber;
+	private int rollNumber;
 	private double physicsMarks;
 	private double chemistryMarks;
 	private double mathematicsMarks;
@@ -30,13 +33,13 @@ public class Student {
 		this.grade = grade;
 	}
 
-	public Student(String Name, LocalDate DOB, String rollNumber) {
+	public Student(String Name, LocalDate DOB, int rollNumber) {
 		this.Name = Name;
 		this.DOB = DOB;
 		this.rollNumber = rollNumber;
 	}
 	
-	public Student(String Name, LocalDate DOB, String rollNumber, 
+	public Student(String Name, LocalDate DOB, int rollNumber, 
 			double physicsMarks, double chemistryMarks, double mathematicsMarks) {
 		this.Name = Name; this.DOB = DOB; this.rollNumber = rollNumber;
 		this.physicsMarks = physicsMarks; this.chemistryMarks = chemistryMarks;
@@ -79,17 +82,18 @@ public class Student {
 	
 	public double getTotalMarks() {
 		this.totalMarks = this.physicsMarks + this.chemistryMarks + this.mathematicsMarks;
-		if (this.totalMarks > 90) this.setGrade('A');
-		else if (this.totalMarks <= 90 && this.totalMarks > 80)
+		double total = this.totalMarks/3;
+		if (total > 90) this.setGrade('A');
+		else if (total <=  90 && total > 80)
 			this.setGrade('B');
-		else if (this.totalMarks <= 80 && this.totalMarks > 70)
+		else if (total <= 80 && total > 70)
 			this.setGrade('C');
 		else 
 			this.setGrade('D');
 		return this.totalMarks;
 	}
 
-	public String getRollNumber() {
+	public int getRollNumber() {
 		return this.rollNumber;
 	}
 
@@ -105,14 +109,15 @@ public class Student {
 		return this.mathematicsMarks;
 	}
 
-	public void setRollNumber(String rollNumber) {
+	public void setRollNumber(int rollNumber) {
 		this.rollNumber = rollNumber;
 	}
 
 	public void setName(String name) {
 		this.Name = name;
 	}
-
+	
+	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	public void setDOB(LocalDate dOB) {
 		this.DOB = dOB;
 		this.age = this.getAge();
@@ -133,14 +138,14 @@ public class Student {
 		this.updateMarks();
 	}
 	
-	private void updateMarks() {
+	public void updateMarks() {
 		this.totalMarks = this.getTotalMarks();
 		this.avgMarks = this.getAvgMarks();
 	}
 
 	public String toString() {
 		return "Name: " + this.Name + ", Roll Number: " + this.rollNumber 
-				+ "DOB: " + this.DOB + ", Age: " + this.getAge()
+				+ ", DOB: " + this.DOB + ", Age: " + this.getAge()
 				+ ", Marks: " + this.physicsMarks + "(Phy.), " 
 				+ this.chemistryMarks + "(Chem.), " + this.mathematicsMarks 
 				+ "(Maths)." + " Total: " + this.totalMarks 
