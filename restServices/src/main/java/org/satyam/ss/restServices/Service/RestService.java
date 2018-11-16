@@ -277,6 +277,9 @@ public class RestService {
 		else if(key.compareTo("grade")==0) {
 			Collections.sort(students, new StudentGradeComparator());
 		}
+		else if(key.compareTo("rollNumber")==0) {
+			Collections.sort(students,new StudentComparator());
+		}
 		return students;
 	}
 }

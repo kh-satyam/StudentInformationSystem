@@ -41,6 +41,10 @@ public class StudentResource {
 		}
 		return obj;
 	}
+	
+	// return 0 on if data already exist
+	// return 1 on success 
+	// return 2 on server side error
 	@POST
 	@Path("add")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -55,9 +59,14 @@ public class StudentResource {
 			FormDataBodyPart jsonPart=form.getField("json");
 			jsonPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
 			Student obj=jsonPart.getValueAs(Student.class);
+			// returns 0 if student already exists
+			if ( service.getStudent(obj.getRollNumber()) != null ) return 0;
+			
 			System.out.println(obj);
+			
 			String path="C://images/"+obj.getRollNumber()+".jpg";
-			res=service.addStudentWithImage(obj,is,path);
+			// service will return 1 on successful addition
+			res = service.addStudentWithImage(obj, is, path);
 		}catch(Exception e){
 			System.out.println(e);
 		}

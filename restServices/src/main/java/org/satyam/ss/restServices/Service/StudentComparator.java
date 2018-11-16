@@ -3,8 +3,8 @@ import java.util.Comparator;
 
 import org.satyam.ss.restServices.model.Student;
 
-public class StudentGradeComparator implements Comparator<Student> {
+public class StudentComparator implements Comparator<Student> {
 	public int compare(Student s1,Student s2) {
-		return Character.compare(s1.getGrade(), s2.getGrade());
+		return Integer.compare(s1.getRollNumber(), s2.getRollNumber());
 	}
 }
