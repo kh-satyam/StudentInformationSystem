@@ -99,7 +99,7 @@ public class StudentResource {
 		}
 		if(key.compareTo("DOB")==0) {
 			try {
-				//Date date=new SimpleDateFormat("dd-mm-yyyy").parse(value);
+				Date date=new SimpleDateFormat("dd-mm-yyyy").parse(value);
 				java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 				res=service.updateDOB(roll,sqlDate);
 			}catch(Exception e) {

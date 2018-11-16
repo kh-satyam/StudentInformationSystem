@@ -23,7 +23,7 @@ $(document).ready(function() {
 		    }).then(function(data) {
 		    	if(data != undefined) {
 			    	console.log(data);
-			    	$('#Name').empty().append(data.Name);
+			    	$('#Name').empty().append(data.name);
 			       	$('#rollNumber').empty().append(data.rollNumber);
 			       	$('#DOB').empty().append(data.DOB);
 			       	$('#age').empty().append(data.age);
