@@ -26,6 +26,13 @@ CREATE TABLE `student` (
 
 
 
+
+
+
+
+
+
+
 COMMENT TABLE
 
 
