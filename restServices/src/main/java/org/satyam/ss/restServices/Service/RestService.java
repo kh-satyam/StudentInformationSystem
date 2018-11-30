@@ -31,10 +31,6 @@ public class RestService {
 					DatabaseConfiguration.userName,
 					DatabaseConfiguration.password);
 			
-<<<<<<< HEAD
-			
-=======
->>>>>>> branch 'master' of https://github.com/kh-satyam/StudentInformationSystem.git
 			
 		}catch(Exception e) {
 			System.out.println("Error occurred");
