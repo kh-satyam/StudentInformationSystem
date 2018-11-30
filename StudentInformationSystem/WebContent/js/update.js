@@ -17,6 +17,14 @@ $(document).ready(function() {
 		console.log(toggler.value);
 		var x = document.getElementById("t1");
 		var y = document.getElementById("t2");
+		console.log(toggler.value);
+		if(toggler.value=='password'){
+			console.log("insie password");
+			x.type='password';
+		}else{
+			console.log("not password");
+			x.type='text';
+		}
 		if(toggler.value=="DOB"){
 			x.style.visibility='hidden';
 			if(y.style.visibility==='hidden'){
