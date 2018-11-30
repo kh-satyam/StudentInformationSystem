@@ -22,7 +22,7 @@ import org.satyam.ss.restServices.Service.StudentNameComparator;
 import javafx.scene.chart.PieChart.Data;
 
 public class RestService {
-	private Connection connection,connection2;
+	private Connection connection;
 	public RestService(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -304,9 +304,10 @@ public class RestService {
 	public ArrayList<comment> getAndPostComments(String cmt,int roll)
 	{
 		ArrayList<comment> comment=new ArrayList<comment>();int success=0; 
+		if(!cmt.equals("aal")) {
 		try
 		{
-			PreparedStatement stmt=connection2.prepareStatement("insert into comment (rollno,comment) values(?,?)");
+			PreparedStatement stmt=connection.prepareStatement("insert into comment (rollno,comment) values(?,?)");
 			stmt.setInt(1, roll);
 			stmt.setString(2,cmt);
 			success=stmt.executeUpdate();
@@ -314,13 +315,26 @@ public class RestService {
 		catch(Exception e) 
 		{
 			System.out.println(e);
-		}
+		}}
 		try 
 		{
-			PreparedStatement stmt=connection2.prepareStatement("select * from comment;");
+			PreparedStatement stmt=connection.prepareStatement("select * from comment;");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()) {
-				comment.add(new comment(rs.getInt(2),rs.getString(3)));
+				
+				int rn=rs.getInt(2);
+				ResultSet rs2=null;
+				try {
+					PreparedStatement stmt2=connection.prepareStatement("select Name from student where rollNumber=?;");
+					stmt2.setInt(1, rn);	
+					rs2=stmt2.executeQuery();
+					rs2.next();
+					System.out.println(rs2.getString(2));
+				}catch(Exception e) {			System.out.println(e);}
+				
+				
+				
+				comment.add(new comment(rs.getInt(2),rs.getString(3),rs2.getString(1)));
 			}
 		}
 		catch(Exception e) 

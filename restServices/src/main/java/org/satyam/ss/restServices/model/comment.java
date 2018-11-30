@@ -7,13 +7,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class comment {
 int rollno;
 String comment;
+String name;
 
-
-public comment(int rollno, String comment) {
+public comment(int rollno, String comment,String name) {
 	super();
 	this.rollno = rollno;
 	this.comment = comment;
+	this.name=name;
 }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
 public int getRollno() {
 	return rollno;
 }
