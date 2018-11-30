@@ -26,6 +26,7 @@ import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.satyam.ss.restServices.Service.RestService;
 import org.satyam.ss.restServices.model.Student;
+import org.satyam.ss.restServices.model.comment;
 
 @Path("student")
 public class StudentResource {
@@ -65,7 +66,7 @@ public class StudentResource {
 			
 			System.out.println(obj);
 			
-			String path="C://images/"+obj.getRollNumber()+".jpg";
+			String path="/home/utkarsh/Desktop/pic/"+obj.getRollNumber()+".jpg";
 			// service will return 1 on successful addition
 			res = service.addStudentWithImage(obj, is, path);
 		}catch(Exception e){
@@ -75,10 +76,10 @@ public class StudentResource {
 	}
 	
 	@GET
-	@Path("download/image/{rollno}")
+	@Path("download/image/{rollno}")//  /home/utkarsh/Desktop
 	@Produces({"image/png", "image/jpg", "image/gif"})
 	public Response downloadImageFile(@PathParam("rollno") String roll) {
-		String path="C://images/"+roll+".jpg";
+		String path="/home/utkarsh/Desktop/pic/"+roll+".jpg";
 		File file = new File(path);
 		ResponseBuilder responseBuilder = Response.ok((Object) file);
 		roll=roll+".png";
@@ -145,4 +146,27 @@ public class StudentResource {
 		res=service.getAllByNameRange(from, to, key);
 		return res;
 	}
+	@GET
+	@Path("comment/{cmt}/{roll}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<comment> g(@PathParam("cmt")String cmt,@PathParam("roll")int rollno)
+	{
+		ArrayList<comment> res=new ArrayList<comment>();
+		
+		System.out.println(cmt);
+		res=service.getAndPostComments(cmt,rollno);
+		for(int i=0;i<res.size();i++)
+		{
+			System.out.println(res.get(i).getRollno()+" "+res.get(i).getComment());
+		}
+		return res;
+	}
+	@GET
+	@Path("login/{username}/{pwd}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String login(@PathParam("username")int a,@PathParam("pwd")String b)
+	{
+		return service.login(a,b);
+	}
+
 }
