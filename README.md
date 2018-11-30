@@ -20,3 +20,23 @@ CREATE TABLE `student` (
   CHECK ( `rollNumber` > 0 )  
 );
 </code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+COMMENT TABLE
+
+
+
+<code>
+create table comment(id int not null AUTO_INCREMENT, rollno int not null,comment varchar(255),primary key(id),foreign key(rollno)references student(rollNumber));
+</code>
