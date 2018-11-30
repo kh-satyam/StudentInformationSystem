@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="css/display.css">
+    <link rel="stylesheet" href="css/login.css">
     <!-- Font Awesome CSS -->
     <!-- <link rel="stylesheet" href="css/all.css"> -->
 
@@ -32,6 +32,7 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
+            $('.msg').hide();
         });
     </script>
 
@@ -67,10 +68,20 @@
                     </button>
                    
                 </div>
-enter rollno:<input id="rollno" type="text"/><br/>
-enter password:<input id="pass" type="password"/><br/>
-<button onclick=func()>submit</button><br/>
-<span id="amit"></span>
+<div class="myLoginForm">
+    <h2>Login</h2>
+    <br>           
+	<form id="loginFrom" class="form-group" name="loginForm">
+		<input type="text" id="rollno" autocomplete="off" placeholder="Roll Number" class="form-control" name="rollno" required>
+		<p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
+		<br>
+		<input type="password" id="pass" autocomplete="off" placeholder="Password" class="form-control" name="pass" required>
+         <p class='msg text-danger' id="password-msg">Incorrect user information.</p>
+	</form>
+	<button onclick=func()>Submit</button><br/>
+</div>
+
+
 </div>
 </div>
 </body>
