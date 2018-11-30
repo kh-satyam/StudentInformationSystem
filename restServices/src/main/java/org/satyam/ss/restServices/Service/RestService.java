@@ -16,12 +16,13 @@ import java.util.Collections;
 import java.sql.*;
 
 import org.satyam.ss.restServices.model.Student;
+import org.satyam.ss.restServices.model.comment;
 import org.satyam.ss.restServices.Service.StudentNameComparator;
 
 import javafx.scene.chart.PieChart.Data;
 
 public class RestService {
-	private Connection connection;
+	private Connection connection,connection2;
 	public RestService(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,6 +30,13 @@ public class RestService {
 					DatabaseConfiguration.dataBaseUrl,
 					DatabaseConfiguration.userName,
 					DatabaseConfiguration.password);
+			
+			connection2=DriverManager.getConnection(
+					DatabaseConfiguration.dataBaseUrl2,
+					DatabaseConfiguration.userName2,
+					DatabaseConfiguration.password2);
+			
+			
 		}catch(Exception e) {
 			System.out.println("Error occurred");
 			System.out.println(e);
@@ -45,7 +53,7 @@ public class RestService {
 			double phy=obj.getPhysicsMarks();
 			double chem=obj.getMathematicsMarks();
 			double maths=obj.getChemistryMarks();
-			PreparedStatement stmt=connection.prepareStatement("insert into student values(?,?,?,?,?,?)");
+			PreparedStatement stmt=connection.prepareStatement("insert into student(Name,DOB,rollNumber,physicsMarks,chemistryMarks,mathematicsMarks,password) values(?,?,?,?,?,?,'as')");
 			stmt.setString(1, name);
 			stmt.setDate(2,Date.valueOf(dob));
 			stmt.setInt(3, rollno);
@@ -281,5 +289,55 @@ public class RestService {
 			Collections.sort(students,new StudentComparator());
 		}
 		return students;
+	}
+	public ArrayList<comment> getAndPostComments(String cmt,int roll)
+	{
+		ArrayList<comment> comment=new ArrayList<comment>();int success=0; 
+		try
+		{
+			PreparedStatement stmt=connection2.prepareStatement("insert into comment (rollno,comment) values(?,?)");
+			stmt.setInt(1, roll);
+			stmt.setString(2,cmt);
+			success=stmt.executeUpdate();
+		}
+		catch(Exception e) 
+		{
+			System.out.println(e);
+		}
+		try 
+		{
+			PreparedStatement stmt=connection2.prepareStatement("select * from comment;");
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				comment.add(new comment(rs.getInt(2),rs.getString(3)));
+			}
+		}
+		catch(Exception e) 
+		{
+			System.out.println(e);
+		}
+		return comment;
+	}
+	public String login(int rollno,String password)
+	{
+		System.out.println("sds");
+		String pass="";
+		
+		try {
+			PreparedStatement stmt=connection.prepareStatement("select password from student where rollNumber=?;");
+			stmt.setInt(1, rollno);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				pass=rs.getString(1);
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}	
+		if(pass.equals(password))
+		{
+			return "success";
+		}
+		else return "failure";
 	}
 }

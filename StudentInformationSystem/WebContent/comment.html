@@ -8,35 +8,41 @@
 
     <title> Student Portal</title>
 
-          <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/sort.css">
-        <!-- Font Awesome CSS -->
-        <!-- <link rel="stylesheet" href="css/all.css"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/display.css">
+    <!-- Font Awesome CSS -->
+    <!-- <link rel="stylesheet" href="css/all.css"> -->
 
-        <!-- Font Awesome JS -->
-        <!-- <script defer src="js/solid.js"></script> -->
-        <!-- <script defer src="js/fontawesome.js"></script> -->
+    <!-- Font Awesome JS -->
+    <!-- <script defer src="js/solid.js"></script> -->
+    <!-- <script defer src="js/fontawesome.js"></script> -->
 
-        <!-- jQuery -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <!-- Popper.JS -->
-        <!-- <script src="js/popper.min.js"></script> -->
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Popper.JS -->
+    <!-- <script src="js/popper.min.js"></script> -->
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
             });
-        </script>
+        });
+    </script>
+
+    <script src="js/comment.js"></script>
 
 </head>
 
+
+
+
 <body>
+
 
     <div class="wrapper">
     <!-- Sidebar -->
@@ -47,8 +53,7 @@
 
         <ul class="list-unstyled components">
         
-      
-
+          
             <li>
                 <a href="update.html">   <span class="tab">  <i class="far fa-edit"></i>  </span> Update </a>
 
@@ -61,13 +66,17 @@
             <li>
                 <a href="range-query.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query </a>
             </li>
+            
+            <li>
+                <a href="displayRange.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query Corousal</a>
+            </li>
                 <li>
                     <a href="comment.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Comment</a>
                 </li>
         </ul>
     </nav>
-
-    <div id="content">
+    
+        <div id="content">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-basic">
@@ -76,8 +85,15 @@
                     </button>
                    
                 </div>
-    </div>
-    </div>
-</body>
+                
+                
 
+<h1>enter comment</h1>
+<input type="text" id="comment">
+<button  onclick="sendInfo()">submit</button>
+<br/><br/>
+<span id="amit"></span>
+</div>
+</div>
+</body>
 </html>
