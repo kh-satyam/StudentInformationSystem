@@ -39,7 +39,10 @@ $(document).ready(function() {
 			if(x.elements[i].name!="file"){
 				// from validation
 				// validating roll number
-				if ( x.elements[i].name == "rollNumber" ) {
+				if ( x.elements[i].name == "Name" ) {
+					if ( x.elements[i].value == '' ) {$("#name-msg").show("slow"); return;}
+				}
+				else if ( x.elements[i].name == "rollNumber" ) {
 					var rollNumber = parseInt(x.elements[i].value);
 					if ( isNaN(rollNumber) || rollNumber < 1) {$("#rollNumber-msg").show("slow"); return;}
 				}

@@ -1,5 +1,8 @@
 $(document).ready(function() {
-	
+	var globalRoll = localStorage.getItem("roll");
+    if (globalRoll == null) { 
+        window.location = 'http://localhost:8080/StudentInformationSystem/login.html';
+    }
 	$('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

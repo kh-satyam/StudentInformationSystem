@@ -9,10 +9,6 @@ $(document).ready(function() {
 console.log("here");
 var request;  
 
-
-
-
-
 function sendInfo()  
 {  
 var v=document.getElementById("comment").value;
@@ -45,18 +41,27 @@ alert("Unable to connect to server");
 }  
   
 function getInfo(){  
-if(request.readyState==4){  
-var val=JSON.parse(request.responseText);  
-console.log("comments array=");
-console.log(val);
-document.getElementById('amit').innerHTML="";
-document.getElementById('amit').innerHTML+="<b>rollno</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>comment</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>name</b><br/>";
+	if(request.readyState == 4){  
+		var val = JSON.parse(request.responseText);  
+		console.log("comments array=");
+		console.log(val);
+		// document.getElementById('amit').innerHTML="";
+		// document.getElementById('amit').innerHTML+="<b>rollno</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>comment</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>name</b><br/>";
+		// for (i in val) {
+		// 	document.getElementById('amit').innerHTML+=val[i]['rollno']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+		// 	document.getElementById('amit').innerHTML+=val[i]['comment']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+		// 	document.getElementById('amit').innerHTML+=val[i]['name']+"<br/>";
+		// }
+		var populate = "<table> <tr> <th>Roll Number   </th><th>Name    </th><th>Comment  </th></tr>";
+		for ( var i in val ) {
+			populate += "<tr>";
+			populate += ("<td>" + val[i]['rollno'] + "</td>");
+			populate += ("<td>" + val[i]['name'] + "</td>");
+			populate += ("<td>" + val[i]['comment'] + "</td>");
+			populate += ("</tr>");
+		};
+		populate += ("</table>");
+		$("#displayBody").html(populate);
 
-for (i in val)
-	{
-	document.getElementById('amit').innerHTML+=val[i]['rollno']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-	document.getElementById('amit').innerHTML+=val[i]['comment']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-	document.getElementById('amit').innerHTML+=val[i]['name']+"<br/>";
-	}
-}  
+	}  
 } 

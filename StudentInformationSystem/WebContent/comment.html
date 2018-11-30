@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="css/display.css">
+    <link rel="stylesheet" href="css/comment.css">
     <!-- Font Awesome CSS -->
     <!-- <link rel="stylesheet" href="css/all.css"> -->
 
@@ -28,6 +28,10 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            var globalRoll = localStorage.getItem("roll");
+            if (globalRoll == null) { 
+                window.location = 'http://localhost:8080/StudentInformationSystem/login.html';
+            }
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
@@ -70,9 +74,13 @@
             <li>
                 <a href="displayRange.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Range Query Corousal</a>
             </li>
-                <li>
-                    <a href="comment.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Comment</a>
-                </li>
+            <li>
+                <a href="comment.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span>Discussion Forum</a>
+            </li>
+
+            <li>
+               <a href="logout.html">  <span class="tab"> <i class="fas fa-sort-amount-up"></i> </span> Logout</a>
+           </li>
         </ul>
     </nav>
     
@@ -87,12 +95,20 @@
                 </div>
                 
                 
-
-<h1>enter comment</h1>
-<input type="text" id="comment">
-<button  onclick="sendInfo()">submit</button>
-<br/><br/>
-<span id="amit"></span>
+        <div class="myForum">
+                    <form>
+                    <div class="form-group">
+                        <label for="comment">Enter Comment</label>
+                        <input type="text" id="comment" autocomplete="off" placeholder="Comment" class="form-control" name="comment" required>
+                        <p class='msg text-danger' id="rollNumber-msg">Please Enter a valid roll number.</p>
+                        <br>
+                        <button id="submit" onclick="sendInfo()" type="button" class="btn btn-basic">Submit</button>
+                    </div>
+                </form>
+        <br/><br/>
+             <div class="container">
+      <div id="displayBody" class="container"></div>
+</div>    
 </div>
 </div>
 </body>

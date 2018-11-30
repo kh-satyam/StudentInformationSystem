@@ -7,6 +7,10 @@ function hide_tw() {
 }
 
 $(document).ready(function() {
+	var globalRoll = localStorage.getItem("roll");
+	if (globalRoll == null) { 
+	    window.location = 'http://localhost:8080/StudentInformationSystem/login.html';
+	}
 	hide_tw();
 	$('.msg').hide();
 	$('#submit').click(function()
