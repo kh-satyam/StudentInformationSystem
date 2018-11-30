@@ -8,12 +8,21 @@ $(document).ready(function() {
 });
 console.log("here");
 var request;  
+
+
+
+
+
 function sendInfo()  
 {  
 var v=document.getElementById("comment").value;
-console.log(v);
+console.log("v="+v);
 var b=localStorage.getItem("roll");
 console.log("current user rollno= "+b);
+if(v=="")
+	{
+		v="aal";
+	}
 var url="http://localhost:8080/restServices/webapi/student/comment/"+v+"/"+b;  
   
 if(window.XMLHttpRequest){  
@@ -37,7 +46,17 @@ alert("Unable to connect to server");
   
 function getInfo(){  
 if(request.readyState==4){  
-var val=request.responseText;  
-document.getElementById('amit').innerHTML=val;  
+var val=JSON.parse(request.responseText);  
+console.log("comments array=");
+console.log(val);
+document.getElementById('amit').innerHTML="";
+document.getElementById('amit').innerHTML+="<b>rollno</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>comment</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>name</b><br/>";
+
+for (i in val)
+	{
+	document.getElementById('amit').innerHTML+=val[i]['rollno']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+	document.getElementById('amit').innerHTML+=val[i]['comment']+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+	document.getElementById('amit').innerHTML+=val[i]['name']+"<br/>";
+	}
 }  
 } 
