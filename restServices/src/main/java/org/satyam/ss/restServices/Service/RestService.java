@@ -31,11 +31,6 @@ public class RestService {
 					DatabaseConfiguration.userName,
 					DatabaseConfiguration.password);
 			
-			connection2=DriverManager.getConnection(
-					DatabaseConfiguration.dataBaseUrl2,
-					DatabaseConfiguration.userName2,
-					DatabaseConfiguration.password2);
-			
 			
 		}catch(Exception e) {
 			System.out.println("Error occurred");
@@ -53,13 +48,15 @@ public class RestService {
 			double phy=obj.getPhysicsMarks();
 			double chem=obj.getMathematicsMarks();
 			double maths=obj.getChemistryMarks();
-			PreparedStatement stmt=connection.prepareStatement("insert into student(Name,DOB,rollNumber,physicsMarks,chemistryMarks,mathematicsMarks,password) values(?,?,?,?,?,?,'as')");
+			String password=obj.getPassword();
+			PreparedStatement stmt=connection.prepareStatement("insert into student(Name,DOB,rollNumber,physicsMarks,chemistryMarks,mathematicsMarks,password) values(?,?,?,?,?,?,?)");
 			stmt.setString(1, name);
 			stmt.setDate(2,Date.valueOf(dob));
 			stmt.setInt(3, rollno);
 			stmt.setDouble(4, phy);
 			stmt.setDouble(5, chem);
 			stmt.setDouble(6, maths);
+			stmt.setString(7, password);
 			success=stmt.executeUpdate();
 			saveFile(is,location);
 		}catch(Exception e) {
@@ -158,6 +155,20 @@ public class RestService {
 			String sql = "update student set physicsMarks=? where rollnumber=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setDouble(1, value);
+			stmt.setInt(2, roll);
+		    success=stmt.executeUpdate();
+		    System.out.println(success);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return success;
+	}
+	public int updatePassword(int roll,String pwd) {
+		int success=0;
+		try {
+			String sql = "update student set password=? where rollnumber=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, pwd);
 			stmt.setInt(2, roll);
 		    success=stmt.executeUpdate();
 		    System.out.println(success);
@@ -320,7 +331,7 @@ public class RestService {
 	}
 	public String login(int rollno,String password)
 	{
-		System.out.println("sds");
+		System.out.println("login validation");
 		String pass="";
 		
 		try {

@@ -20,6 +20,15 @@ public class Student {
 	private double totalMarks;
 	private double avgMarks;
 	private char grade;
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	//ensure model class have no op constructor
 	public Student() {
@@ -149,7 +158,7 @@ public class Student {
 				+ ", Marks: " + this.physicsMarks + "(Phy.), " 
 				+ this.chemistryMarks + "(Chem.), " + this.mathematicsMarks 
 				+ "(Maths)." + " Total: " + this.totalMarks 
-				+ ", Avg: " + this.avgMarks;
+				+ ", Avg: " + this.avgMarks+" "+"Password"+" "+this.password;
 	}
 
 }
