@@ -59,6 +59,7 @@ public class StudentResource {
 			FormDataBodyPart jsonPart=form.getField("json");
 			jsonPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
 			Student obj=jsonPart.getValueAs(Student.class);
+			System.out.println(jsonPart);
 			// returns 0 if student already exists
 			if ( service.getStudent(obj.getRollNumber()) != null ) return 0;
 			
@@ -72,6 +73,7 @@ public class StudentResource {
 		}
 	    return res;
 	}
+	
 	@GET
 	@Path("download/image/{rollno}")
 	@Produces({"image/png", "image/jpg", "image/gif"})
