@@ -82,7 +82,11 @@ $(document).ready(function() {
 		        // document.getElementById("f1").reset();
 		        // document.getElementById("f2").reset();
 		        if(json_data == 0) $('#eexist-msg').show("slow");
-		        else if(json_data == 1) $('#success-msg').show("slow");
+		        else if(json_data == 1) {
+		        	$('#success-msg').show("slow");
+		        	x.reset();
+		        	y.reset();
+		        }
 				else $('#error-msg').show("slow");
 //		        if(json_data==1){
 //		        	$.
