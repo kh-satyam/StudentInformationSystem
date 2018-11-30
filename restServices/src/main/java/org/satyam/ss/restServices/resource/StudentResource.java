@@ -60,13 +60,14 @@ public class StudentResource {
 			FormDataBodyPart jsonPart=form.getField("json");
 			jsonPart.setMediaType(MediaType.APPLICATION_JSON_TYPE);
 			Student obj=jsonPart.getValueAs(Student.class);
+			System.out.println("insert");
 			System.out.println(jsonPart);
 			// returns 0 if student already exists
 			if ( service.getStudent(obj.getRollNumber()) != null ) return 0;
 			
 			System.out.println(obj);
 			
-			String path="/home/utkarsh/Desktop/pic/"+obj.getRollNumber()+".jpg";
+			String path="C:\\images\\"+obj.getRollNumber()+".jpg";
 			// service will return 1 on successful addition
 			res = service.addStudentWithImage(obj, is, path);
 		}catch(Exception e){
@@ -79,7 +80,7 @@ public class StudentResource {
 	@Path("download/image/{rollno}")//  /home/utkarsh/Desktop
 	@Produces({"image/png", "image/jpg", "image/gif"})
 	public Response downloadImageFile(@PathParam("rollno") String roll) {
-		String path="/home/utkarsh/Desktop/pic/"+roll+".jpg";
+		String path="C:\\images\\"+roll+".jpg";
 		File file = new File(path);
 		ResponseBuilder responseBuilder = Response.ok((Object) file);
 		roll=roll+".png";
@@ -93,7 +94,8 @@ public class StudentResource {
 								@PathParam("parameter") String key,
 								@PathParam("value") String value){
 		int res=0;
-		//System.out.println(key);
+		System.out.println(key);
+		System.out.println(value);
 		if(key.compareTo("name")==0) {
 			res=service.updateName(roll, value);
 			//System.out.println(key);
@@ -117,6 +119,10 @@ public class StudentResource {
 			}catch(Exception e) {
 				System.out.println(e);
 			}
+		}
+		if(key.compareTo("password")==0) {
+			String password=value;
+			res=service.updatePassword(roll, value);
 		}
 		return res;
 	}
@@ -166,6 +172,7 @@ public class StudentResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String login(@PathParam("username")int a,@PathParam("pwd")String b)
 	{
+		
 		return service.login(a,b);
 	}
 
