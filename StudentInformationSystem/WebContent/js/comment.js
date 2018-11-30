@@ -55,9 +55,9 @@ function getInfo(){
 		var populate = "<table> <tr> <th>Roll Number   </th><th>Name    </th><th>Comment  </th></tr>";
 		for ( var i in val ) {
 			populate += "<tr>";
-			populate += ("<td>" + val[i]['rollno'] + "</td>");
-			populate += ("<td>" + val[i]['name'] + "</td>");
-			populate += ("<td>" + val[i]['comment'] + "</td>");
+			populate += ("<td height='50' width='1000' >" + val[i]['rollno'] + "</td>");
+			populate += ("<td height='50' width='1000' >" + val[i]['name'] + "</td>");
+			populate += ("<td height='50' width='1000' >" + val[i]['comment'] + "</td>");
 			populate += ("</tr>");
 		};
 		populate += ("</table>");
